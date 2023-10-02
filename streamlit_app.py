@@ -30,11 +30,11 @@ streamlit.dataframe(fruits_to_show)
 # New section to display fruityvice api response
 streamlit.header("Fruityvice Fruit Advice!")
 try:
-  fruit_choice = streamlit.text_input('What fruit would you like information on?', 'Kiwi')
+  fruit_choice = streamlit.text_input('What fruit would you like information on?')
   if not fruit_choice:
         streamlit.error("Please select a fruit to get information.")
   else:
-      fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+ "kiwi")
+      fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+ fruit_choice)
       # take the json version of the response and normalize it? 
       fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
       # output it as a table.
